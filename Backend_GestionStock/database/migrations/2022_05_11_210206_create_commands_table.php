@@ -14,7 +14,7 @@ class CreateCommandsTable extends Migration
     public function up()
     {
         Schema::create('commands', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
             $table->integer('qauntiteCmd');
             $table->timestamps(); 
            //---------foreign key-------------------

@@ -18,6 +18,15 @@ return [
         'passwords' => 'users',
     ],
 
+    'defaults' => [
+        'guard' => 'api',
+        'passwords' => 'users',
+    ],
+    // 'defaults' =>[
+    //     'guard' => 'admin',
+    //     'passwords' => 'users',],
+
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -40,6 +49,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [
+            'driver' => 'jwt',
+            'provider' => 'users',
+        ],
+        'admin' => [
+            'driver' => 'jwt',
+            'provider' => 'users',
+        ],
+        'client' => [
+            'driver' => 'jwt',
+            'provider' => 'clients',
+        ],
     ],
 
     /*
@@ -61,6 +82,10 @@ return [
 
     'providers' => [
         'users' => [
+            'driver' => 'eloquent',
+            'model'=>App\models\User::class,
+        ],
+        'clients' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
@@ -92,7 +117,12 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
-        ],
+        ], 
+    //     'admins' => [
+    //     'provider' => 'admins',
+    //     'email' => 'auth.emails.password',
+    //     'table' => 'password_resets', 
+    //     'expire' => 60,],
     ],
 
     /*

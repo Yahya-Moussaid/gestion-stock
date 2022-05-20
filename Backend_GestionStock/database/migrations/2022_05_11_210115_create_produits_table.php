@@ -14,19 +14,20 @@ class CreateProduitsTable extends Migration
     public function up()
     {
         Schema::create('produits', function (Blueprint $table) {
-            $table->id();
-            $table->text('familleProduit');
-            $table->string('nomProduit',30);
-            $table->string('referenceProduit',30);
+            $table->id()->autoIncrement();
+            $table->string('familleProduit',50);
+            $table->string('nomProduit',50);
+            $table->string('referenceProduit',100);
             $table->text('description');
             $table->float('prixAchat');
             $table->float('prixVente');
-            $table->float('commission');
+            $table->string('commission',10);
             $table->integer('qauntitestock');
+            $table->string('image');
             $table->timestamps();
             //---------foreign key-------------------
             $table->foreignId('depot_id')->constrained('depots')->onDelete('cascade')->onUpdate('cascade');
-        
+            $table->foreignId('fournisseur_id')->constrained('fournisseurs')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class command extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+    protected $filleble=['qauntiteCmd',/*'client_id',*/'produit_id'];
 }

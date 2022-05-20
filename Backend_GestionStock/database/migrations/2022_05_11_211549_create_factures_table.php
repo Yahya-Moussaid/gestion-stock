@@ -14,10 +14,10 @@ class CreateFacturesTable extends Migration
     public function up()
     {
         Schema::create('factures', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
             $table->integer('tva');
             $table->float('montantTotal');
-            $table->float('monyantTtc');
+            $table->float('Ttc');
             $table->timestamps();
             //---------foreign key-------------------
             $table->foreignId('produit_id')->constrained('produits')->onDelete('cascade')->onUpdate('cascade');

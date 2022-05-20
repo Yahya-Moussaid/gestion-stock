@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\GenerateToken\AssignGuard;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -63,5 +64,9 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'auth.jwt'=> \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
+        //--------------
+        'authguard' =>\App\Http\Middleware\GenerateToken\AssignGuard::class,
+        'checkAdminToken' => \App\Http\Middleware\Admin\CheckAdminToken::class
     ];
 }

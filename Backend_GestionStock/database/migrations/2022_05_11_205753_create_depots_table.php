@@ -14,10 +14,11 @@ class CreateDepotsTable extends Migration
     public function up()
     {
         Schema::create('depots', function (Blueprint $table) {
-            $table->id();
-            $table->string('nomDepot',50);
-            $table->text('adresseDepot');
-            $table->timestamps();
+        
+        $table->id()->autoIncrement();
+        $table->string('nomDepot',50);
+        $table->text('adresseDepot');
+        $table->timestamps();
         });
     }
 
